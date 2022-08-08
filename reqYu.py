@@ -8,27 +8,6 @@ import csv
 header = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"}
 
-# res = req.get(url, headers=header)
-# # soup = BeautifulSoup(res.text, "lxml")
-# soup = BeautifulSoup(res.text, "html.parser")
-
-# 找 class='reportcontainer' 的div，然后遍历其children
-# divContainer = soup.find('div', 'reportcontainer')
-# for child in divContainer.children:
-#     print(child.name)
-#     if child.name == 'table':
-#         for child_node in child.children:
-#             print(child_node.name)
-
-# print(header_list)
-# print(data_list)
-
-
-# 写入csv文件
-# with open('res.csv', mode='w') as res:
-#     writer = csv.DictWriter(res, header_list)
-#     writer.writeheader()
-#     writer.writerows(data_list)
 
 class BadmintonData():
     def __init__(self, header):
@@ -104,7 +83,7 @@ class BadmintonData():
     def start(self, page=1, totalrows=1000, i_type='unified', date='2022-08-01', cate='MS', country='%', pagesize=25):
         # print(page, totalrows)
         '''
-        启动
+        启动,已配置默认值
         '''
         self.genBS4(page, totalrows, i_type, date, cate, country, pagesize)
 
@@ -112,4 +91,5 @@ class BadmintonData():
 # 类的使用
 file1 = BadmintonData(header)
 # file1.start(page, totalrows, i_type, date, cate, country, pagesize)
+# file1.start(2, 1000)
 file1.start(page=2, country='China')
